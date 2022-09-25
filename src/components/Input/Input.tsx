@@ -20,7 +20,7 @@ const Input = () => {
     };
 
     const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
-        if (event.code === 'Enter') {
+        if (event.code === 'Enter' || event.code === 'NumpadEnter') {
             onAddCityHandler()
         }
     }

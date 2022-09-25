@@ -3,10 +3,11 @@ import {addCityAC, isLoadingAC} from "../actions/actions";
 import {API} from "../../api/API";
 
 
-export const addCityTC = (city: string) => (dispatch: Dispatch) => {
+export const addCityTC = (city: string) => async (dispatch: Dispatch) => {
     try {
         dispatch(isLoadingAC(true));
-        API.getWeather(city).then(res => dispatch(addCityAC(res.data)))
+        const response = await API.getWeather(city)
+        dispatch(addCityAC(response.data))
     } catch (e) {
 
     } finally {
