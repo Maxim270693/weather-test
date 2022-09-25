@@ -1,19 +1,26 @@
 import React from 'react';
 import './card.scss';
+import {WeatherTypes} from "../../types/types";
 
-const Card = () => {
+type PropsType = {
+    city: WeatherTypes,
+}
+
+const Card = ({city}: PropsType) => {
+
     return (
         <div className="card">
             <div className="mainInfo">
-                <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="iconWeather"
+                <img src={`http://openweathermap.org/img/wn/${city.weather?.[0].icon}@2x.png`}
                      className="icon"/>
-                <div className="title">title</div>
-                <div className="description">description</div>
-                <div className="temperature">25</div>
+                <div className="title">{city.name}</div>
+                <div className="description">{city?.weather?.[0].description}</div>
+                <div className="temperature">{city.main?.temp.toFixed()}</div>
             </div>
             <div className="information">
-                <div>Humidity: 15</div>
-                <div>Feels like: 19</div>
+                <div>Humidity: {city.main?.humidity}</div>
+                <div>Feels
+                    like: {city && city.main && city.main.feels_like}</div>
             </div>
         </div>
     );
