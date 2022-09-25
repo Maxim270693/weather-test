@@ -8,8 +8,6 @@ import {RootStateType, WeatherTypes} from "./types/types";
 function App() {
     const cities = useSelector<RootStateType, WeatherTypes[]>(state => state.city.cities);
 
-    console.log('cities xxx', cities)
-
     return (
         <div className="App">
             <Input/>

@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent} from 'react';
 import './input.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {RootStateType} from "../../types/types";
@@ -19,7 +19,11 @@ const Input = () => {
         dispatch(addCityTC(inputValue))
     };
 
-    console.log('inputValue >', inputValue)
+    const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.code === 'Enter') {
+            onAddCityHandler()
+        }
+    }
 
     return (
         <div className="inputWrap">
@@ -28,6 +32,7 @@ const Input = () => {
                    className="input"
                    value={inputValue}
                    onChange={onChange}
+                   onKeyDown={onKeyDownHandler}
             />
             <button className="button"
                     onClick={onAddCityHandler}
