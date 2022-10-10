@@ -1,14 +1,17 @@
 import React, {ChangeEvent, KeyboardEvent} from 'react';
 import './input.scss';
 import {useDispatch, useSelector} from "react-redux";
-import {RootStateType} from "../../types/types";
+import {InitialStateType, RootStateType} from "../../types/types";
 import {inputValueAC} from "../../bll/actions/actions";
-import {addCityTC} from "../../bll/thunks/thunk";
+import {addCityTC, editCityTC} from "../../bll/thunks/thunk";
 
 const Input = () => {
     const dispatch = useDispatch();
 
-    const inputValue = useSelector<RootStateType, string>(state => state.city.inputValue);
+    const {
+        inputValue,
+        editCity
+    } = useSelector<RootStateType, InitialStateType>(state => state.city);
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         dispatch(inputValueAC(event.target.value))
@@ -18,6 +21,11 @@ const Input = () => {
         // @ts-ignore
         dispatch(addCityTC(inputValue))
     };
+
+    const onEditCityHandler = () => {
+        // @ts-ignore
+        dispatch(editCityTC(inputValue))
+    }
 
     const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.code === 'Enter' || event.code === 'NumpadEnter') {
@@ -34,10 +42,15 @@ const Input = () => {
                    onChange={onChange}
                    onKeyDown={onKeyDownHandler}
             />
-            <button className="button"
-                    onClick={onAddCityHandler}
-            >+
-            </button>
+            {
+                !editCity
+                    ? <button className="button"
+                              onClick={onAddCityHandler}
+                    >+</button>
+                    : <button className="button"
+                              onClick={onEditCityHandler}
+                    >done</button>
+            }
         </div>
     );
 };

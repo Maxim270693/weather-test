@@ -1,5 +1,12 @@
 import {initialState} from "../bll/reducer/cityReducer";
 import {rootReducer} from "../bll/store/store";
+import {
+    addCityAC,
+    editCityAC,
+    inputValueAC,
+    isLoadingAC,
+    removeCityAC, updateCityAC
+} from "../bll/actions/actions";
 
 // type initialState
 export type InitialStateType = typeof initialState;
@@ -8,7 +15,20 @@ export type InitialStateType = typeof initialState;
 export type RootStateType = ReturnType<typeof rootReducer>;
 
 // type ActionsType
-export type ActionsType = any
+export type ActionsType =
+    AddCityActionType
+    | RemoveCityActionType
+    | IsLoadingActionType
+    | InputValueActionType
+    | EditCityActionType
+    | UpdateCityActionType
+
+export type AddCityActionType = ReturnType<typeof addCityAC>;
+export type RemoveCityActionType = ReturnType<typeof removeCityAC>;
+export type IsLoadingActionType = ReturnType<typeof isLoadingAC>;
+export type InputValueActionType = ReturnType<typeof inputValueAC>;
+export type EditCityActionType = ReturnType<typeof editCityAC>;
+export type UpdateCityActionType = ReturnType<typeof updateCityAC>;
 
 // weather response
 export type WeatherType = {

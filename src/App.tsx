@@ -10,10 +10,13 @@ function App() {
 
     return (
         <div className="App">
+            <h1>Weather</h1>
             <Input/>
             <div className="main">
                 {
-                    cities.map(city => <Card key={city.id} city={city}/>)
+                    !cities.length
+                        ? <div>Список городов пуст</div>
+                        : cities.map(city => <Card key={city?.id} city={city}/>)
                 }
             </div>
         </div>

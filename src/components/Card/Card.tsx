@@ -2,7 +2,7 @@ import React from 'react';
 import './card.scss';
 import {WeatherTypes} from "../../types/types";
 import {useDispatch} from "react-redux";
-import {removeCityAC} from "../../bll/actions/actions";
+import {removeCityAC, updateCityAC} from "../../bll/actions/actions";
 
 type PropsType = {
     city: WeatherTypes,
@@ -18,9 +18,16 @@ const Card = ({city}: PropsType) => {
     return (
         <div className="card">
             <div className="deleteCard">
-                <button className="deleteBtn"
+                <button className="editBtn btn"
+                        onClick={() => dispatch(updateCityAC(city.name))}
+                >
+                    edit
+                </button>
+                <button className="deleteBtn btn"
                         onClick={() => onDeleteCityHandler(city.id)}
-                >x</button>
+                >
+                    x
+                </button>
             </div>
 
             <div className="mainInfo">
