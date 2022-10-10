@@ -1,4 +1,4 @@
-import React, {ChangeEvent, KeyboardEvent} from 'react';
+import React, {ChangeEvent, KeyboardEvent, useEffect} from 'react';
 import './input.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {InitialStateType, RootStateType} from "../../types/types";
@@ -10,8 +10,13 @@ const Input = () => {
 
     const {
         inputValue,
-        editCity
+        editCity,
+        cities,
     } = useSelector<RootStateType, InitialStateType>(state => state.city);
+
+    useEffect(() => {
+        localStorage.setItem('cities', JSON.stringify(cities))
+    }, [cities]);
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         dispatch(inputValueAC(event.target.value))

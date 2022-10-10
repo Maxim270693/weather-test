@@ -8,7 +8,7 @@ import {
 } from "../../constants/constants";
 
 export const initialState = {
-    cities: [] as WeatherTypes[],
+    cities: JSON.parse(localStorage.getItem('cities')!) || [] as WeatherTypes[],
     isLoading: false,
     inputValue: '',
     editCity: '',
@@ -21,7 +21,7 @@ export const cityReducer = (state = initialState, action: ActionsType): InitialS
         case REMOVE_CITY:
             return {
                 ...state,
-                cities: state.cities.filter(city => city.id !== action.payload),
+                cities: state.cities.filter((city: WeatherTypes) => city.id !== action.payload),
                 inputValue: '',
                 editCity: '',
             }
@@ -36,7 +36,7 @@ export const cityReducer = (state = initialState, action: ActionsType): InitialS
                 editCity: action.payload,
             }
         case EDIT_CITY:
-            const newArray = state.cities.map(item => {
+            const newArray = state.cities.map((item: WeatherTypes) => {
                 return item.name === state.editCity
                     ? action.payload
                     : item
