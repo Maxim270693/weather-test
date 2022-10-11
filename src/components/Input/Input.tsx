@@ -2,7 +2,7 @@ import React, {ChangeEvent, KeyboardEvent, useEffect} from 'react';
 import './input.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {InitialStateType, RootStateType} from "../../types/types";
-import {inputValueAC} from "../../bll/actions/actions";
+import {inputValueAC, isErrorAC} from "../../bll/actions/actions";
 import {addCityTC, editCityTC} from "../../bll/thunks/thunk";
 
 const Input = () => {
@@ -20,9 +20,14 @@ const Input = () => {
 
     const onChange = (event: ChangeEvent<HTMLInputElement>) => {
         dispatch(inputValueAC(event.target.value))
-    }
+        dispatch(isErrorAC(''))
+    };
 
     const onAddCityHandler = () => {
+        if (inputValue === '') {
+            dispatch(isErrorAC('The field cannot be empty'))
+        }
+
         // @ts-ignore
         dispatch(addCityTC(inputValue))
     };
@@ -30,13 +35,13 @@ const Input = () => {
     const onEditCityHandler = () => {
         // @ts-ignore
         dispatch(editCityTC(inputValue))
-    }
+    };
 
     const onKeyDownHandler = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.code === 'Enter' || event.code === 'NumpadEnter') {
             onAddCityHandler()
         }
-    }
+    };
 
     return (
         <div className="inputWrap">

@@ -7,11 +7,13 @@ import {RootStateType, WeatherTypes} from "./types/types";
 
 function App() {
     const cities = useSelector<RootStateType, WeatherTypes[]>(state => state.city.cities);
+    const isError = useSelector<RootStateType, string>(state => state.city.isError);
 
     return (
         <div className="App">
             <h1>Weather</h1>
             <Input/>
+            <div className="error">{isError}</div>
             <div className="main">
                 {
                     !cities.length

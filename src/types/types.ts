@@ -3,7 +3,7 @@ import {rootReducer} from "../bll/store/store";
 import {
     addCityAC,
     editCityAC,
-    inputValueAC,
+    inputValueAC, isErrorAC,
     isLoadingAC,
     removeCityAC, updateCityAC
 } from "../bll/actions/actions";
@@ -22,10 +22,12 @@ export type ActionsType =
     | InputValueActionType
     | EditCityActionType
     | UpdateCityActionType
+    | IsErrorActionType
 
 export type AddCityActionType = ReturnType<typeof addCityAC>;
 export type RemoveCityActionType = ReturnType<typeof removeCityAC>;
 export type IsLoadingActionType = ReturnType<typeof isLoadingAC>;
+export type IsErrorActionType = ReturnType<typeof isErrorAC>
 export type InputValueActionType = ReturnType<typeof inputValueAC>;
 export type EditCityActionType = ReturnType<typeof editCityAC>;
 export type UpdateCityActionType = ReturnType<typeof updateCityAC>;

@@ -4,3 +4,4 @@ export const IS_LOADING = 'IS_LOADING';
 export const INPUT_VALUE = 'INPUT_VALUE';
 export const EDIT_CITY = 'EDIT_CITY';
 export const UPDATE_CITI = 'UPDATE_CITI';
+export const IS_ERROR = 'IS_ERROR';
