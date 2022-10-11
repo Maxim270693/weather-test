@@ -24,10 +24,6 @@ const Input = () => {
     };
 
     const onAddCityHandler = () => {
-        if (inputValue === '') {
-            dispatch(isErrorAC('The field cannot be empty'))
-        }
-
         // @ts-ignore
         dispatch(addCityTC(inputValue))
     };
