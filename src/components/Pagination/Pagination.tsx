@@ -13,9 +13,6 @@ const Pagination = ({totalPosts, perPage, currentPage}: PaginationType) => {
     const dispatch = useDispatch();
     const pages = [];
 
-    console.log('totalPosts', totalPosts)
-    console.log('perPage', perPage)
-
     for (let i = 1; i <= Math.ceil(totalPosts / perPage); i++) {
         pages.push(i);
     }
