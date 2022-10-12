@@ -1,10 +1,12 @@
 import {
     ADD_CITY,
+    CURRENT_PAGE,
     EDIT_CITY,
     INPUT_VALUE,
     IS_ERROR,
     IS_LOADING,
-    REMOVE_CITY, UPDATE_CITI
+    REMOVE_CITY,
+    UPDATE_CITI
 } from "../../constants/constants";
 import {WeatherTypes} from "../../types/types";
 
@@ -16,3 +18,4 @@ export const isErrorAC = (payload: string) => ({type: IS_ERROR, payload} as cons
 export const inputValueAC = (payload: string) => ({type: INPUT_VALUE, payload} as const);
 export const editCityAC = (payload: WeatherTypes) => ({type: EDIT_CITY, payload} as const);
 export const updateCityAC = (payload: string) => ({type: UPDATE_CITI, payload} as const);
+export const currentPageAC = (payload: number) => ({type: CURRENT_PAGE, payload} as const);

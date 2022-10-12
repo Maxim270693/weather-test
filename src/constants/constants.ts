@@ -5,3 +5,6 @@ export const INPUT_VALUE = 'INPUT_VALUE';
 export const EDIT_CITY = 'EDIT_CITY';
 export const UPDATE_CITI = 'UPDATE_CITI';
 export const IS_ERROR = 'IS_ERROR';
+export const CURRENT_PAGE = 'CURRENT_PAGE';
+
+export const MAX_CITIES_LENGTH = 3;

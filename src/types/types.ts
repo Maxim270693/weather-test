@@ -1,7 +1,7 @@
 import {initialState} from "../bll/reducer/cityReducer";
 import {rootReducer} from "../bll/store/store";
 import {
-    addCityAC,
+    addCityAC, currentPageAC,
     editCityAC,
     inputValueAC, isErrorAC,
     isLoadingAC,
@@ -23,6 +23,7 @@ export type ActionsType =
     | EditCityActionType
     | UpdateCityActionType
     | IsErrorActionType
+    | CurrentPageActionType
 
 export type AddCityActionType = ReturnType<typeof addCityAC>;
 export type RemoveCityActionType = ReturnType<typeof removeCityAC>;
@@ -31,6 +32,7 @@ export type IsErrorActionType = ReturnType<typeof isErrorAC>
 export type InputValueActionType = ReturnType<typeof inputValueAC>;
 export type EditCityActionType = ReturnType<typeof editCityAC>;
 export type UpdateCityActionType = ReturnType<typeof updateCityAC>;
+export type CurrentPageActionType = ReturnType<typeof currentPageAC>;
 
 // weather response
 export type WeatherType = {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {MouseEvent} from 'react';
 import './card.scss';
 import {WeatherTypes} from "../../types/types";
 import {useDispatch} from "react-redux";
@@ -16,16 +16,26 @@ const Card = ({city}: PropsType) => {
         dispatch(removeCityAC(id))
     }
 
+    const onEditHandler = (event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        dispatch(updateCityAC(city.name))
+    }
+
+    const onDeleteHandler = (event: MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault();
+        onDeleteCityHandler(city.id);
+    }
+
     return (
         <Link to={`city/${city.name}`} className="card">
             <div className="deleteCard">
                 <button className="editBtn btn"
-                        onClick={() => dispatch(updateCityAC(city.name))}
+                        onClick={onEditHandler}
                 >
                     edit
                 </button>
                 <button className="deleteBtn btn"
-                        onClick={() => onDeleteCityHandler(city.id)}
+                        onClick={onDeleteHandler}
                 >
                     x
                 </button>

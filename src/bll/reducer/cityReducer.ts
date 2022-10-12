@@ -1,10 +1,13 @@
 import {ActionsType, InitialStateType, WeatherTypes} from "../../types/types";
 import {
     ADD_CITY,
+    CURRENT_PAGE,
     EDIT_CITY,
-    INPUT_VALUE, IS_ERROR,
+    INPUT_VALUE,
+    IS_ERROR,
     IS_LOADING,
-    REMOVE_CITY, UPDATE_CITI
+    REMOVE_CITY,
+    UPDATE_CITI
 } from "../../constants/constants";
 
 export const initialState = {
@@ -13,6 +16,8 @@ export const initialState = {
     isError: '',
     inputValue: '',
     editCity: '',
+    currentPage: 1, // текущая страница
+    perPage: 3, // кол-во городов на старнице
 }
 
 export const cityReducer = (state = initialState, action: ActionsType): InitialStateType => {
@@ -44,13 +49,14 @@ export const cityReducer = (state = initialState, action: ActionsType): InitialS
                     ? action.payload
                     : item
             })
-            
             return {
                 ...state,
                 cities: newArray,
                 inputValue: '',
                 editCity: '',
             }
+        case CURRENT_PAGE:
+            return {...state, currentPage: action.payload}
         default:
             return state;
     }

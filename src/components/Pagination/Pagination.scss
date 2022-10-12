@@ -1,0 +1,19 @@
+.pages {
+  margin: 20px 0;
+
+  .page, .currentPage {
+    border: 1px solid #3a8ac0;
+    border-radius: 100%;
+    padding: 5px 10px;
+    margin: 0 10px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .currentPage {
+    border: 1px solid darkred;
+    font-weight: 700;
+  }
+}
