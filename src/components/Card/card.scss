@@ -1,4 +1,5 @@
 .card {
+  display: block;
   width: 200px;
   height: fit-content;
   padding: 12px;
@@ -8,6 +9,13 @@
   color: #fff;
   margin: 0 24px 24px 0;
   box-shadow: 3px 3px 12px 1px rgba(0, 0, 0, 0.25);
+  text-decoration: none;
+
+  &:hover {
+    transition: 1s ease; // плавная анимация
+    transform: scale(1.05); // увеличение блока
+    cursor: pointer;
+  }
 
   .deleteCard {
     display: flex;

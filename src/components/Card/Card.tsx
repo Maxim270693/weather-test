@@ -3,6 +3,7 @@ import './card.scss';
 import {WeatherTypes} from "../../types/types";
 import {useDispatch} from "react-redux";
 import {removeCityAC, updateCityAC} from "../../bll/actions/actions";
+import {Link} from 'react-router-dom';
 
 type PropsType = {
     city: WeatherTypes,
@@ -16,7 +17,7 @@ const Card = ({city}: PropsType) => {
     }
 
     return (
-        <div className="card">
+        <Link to={`city/${city.name}`} className="card">
             <div className="deleteCard">
                 <button className="editBtn btn"
                         onClick={() => dispatch(updateCityAC(city.name))}
@@ -43,7 +44,7 @@ const Card = ({city}: PropsType) => {
                 <div>Feels
                     like: {city && city.main && city.main.feels_like}</div>
             </div>
-        </div>
+        </Link>
     );
 };
 

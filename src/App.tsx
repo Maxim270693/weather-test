@@ -1,26 +1,18 @@
 import React from 'react';
 import './App.scss';
-import Input from "./components/Input/Input";
-import Card from "./components/Card/Card";
-import {useSelector} from "react-redux";
-import {RootStateType, WeatherTypes} from "./types/types";
+import {Route, Routes} from 'react-router-dom';
+import MainPage from "./components/MainPage/MainPage";
+import SingleCity from "./components/SingleCity/SingleCity";
 
 function App() {
-    const cities = useSelector<RootStateType, WeatherTypes[]>(state => state.city.cities);
-    const isError = useSelector<RootStateType, string>(state => state.city.isError);
 
     return (
         <div className="App">
             <h1>Weather</h1>
-            <Input/>
-            <div className="error">{isError}</div>
-            <div className="main">
-                {
-                    !cities.length
-                        ? <div>Список городов пуст</div>
-                        : cities.map(city => <Card key={city?.id} city={city}/>)
-                }
-            </div>
+            <Routes>
+                <Route path="/" element={<MainPage/>}/>
+                <Route path="/city/:city" element={<SingleCity/>}/>
+            </Routes>
         </div>
     );
 }
