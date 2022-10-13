@@ -13,7 +13,7 @@ const DailyCard = () => {
                 const currentDay = new Date(dt * 1000);
 
                 return (
-                    <div className="dailyCard">
+                    <div className="dailyCard" key={dt}>
                         <div>{currentDay.toString().split(' ')[0]}</div>
                         <img
                             src={`http://openweathermap.org/img/wn/${weather?.[0].icon}@2x.png`}
