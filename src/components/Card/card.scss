@@ -68,3 +68,13 @@
     }
   }
 }
+
+.cardList {
+
+  &:hover {
+    transition: none;
+    transform: none;
+    cursor: default;
+  }
+
+}

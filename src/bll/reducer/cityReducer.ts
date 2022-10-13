@@ -6,6 +6,7 @@ import {
     INPUT_VALUE,
     IS_ERROR,
     IS_LOADING,
+    MAX_CITIES_LENGTH,
     REMOVE_CITY,
     UPDATE_CITI
 } from "../../constants/constants";
@@ -17,7 +18,7 @@ export const initialState = {
     inputValue: '',
     editCity: '',
     currentPage: 1, // текущая страница
-    perPage: 3, // кол-во городов на старнице
+    perPage: MAX_CITIES_LENGTH, // кол-во городов на старнице
 }
 
 export const cityReducer = (state = initialState, action: ActionsType): InitialStateType => {
