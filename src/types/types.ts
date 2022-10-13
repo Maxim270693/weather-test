@@ -1,11 +1,15 @@
 import {initialState} from "../bll/reducer/cityReducer";
 import {rootReducer} from "../bll/store/store";
 import {
-    addCityAC, currentPageAC,
+    addCityAC,
+    getWeatherDaysAC,
+    currentPageAC,
     editCityAC,
-    inputValueAC, isErrorAC,
+    inputValueAC,
+    isErrorAC,
     isLoadingAC,
-    removeCityAC, updateCityAC
+    removeCityAC,
+    updateCityAC
 } from "../bll/actions/actions";
 
 // type initialState
@@ -17,6 +21,7 @@ export type RootStateType = ReturnType<typeof rootReducer>;
 // type ActionsType
 export type ActionsType =
     AddCityActionType
+    | GetWeatherDaysACActionType
     | RemoveCityActionType
     | IsLoadingActionType
     | InputValueActionType
@@ -26,6 +31,7 @@ export type ActionsType =
     | CurrentPageActionType
 
 export type AddCityActionType = ReturnType<typeof addCityAC>;
+export type GetWeatherDaysACActionType = ReturnType<typeof getWeatherDaysAC>;
 export type RemoveCityActionType = ReturnType<typeof removeCityAC>;
 export type IsLoadingActionType = ReturnType<typeof isLoadingAC>;
 export type IsErrorActionType = ReturnType<typeof isErrorAC>
@@ -79,4 +85,76 @@ export type WeatherTypes = {
         speed: number,
     },
     message: string;
+}
+
+export type WeatherDaysType = {
+    current: CurrentType,
+    daily: DailyType[],
+    hourly: HourlyType[],
+    lat: number,
+    lon: number,
+    minutely: MinutelyType[],
+    timezone: string,
+    timezone_offset: number,
+}
+
+export type CurrentType = {
+    clouds: number,
+    dew_point: number,
+    dt: number,
+    feels_like: number,
+    humidity: number,
+    pressure: number,
+    sunrise: number,
+    sunset: number,
+    temp: number,
+    uvi: number,
+    visibility: number,
+    weather: WeatherType[],
+    wind_deg: number,
+    wind_gust: number,
+    wind_speed: number,
+}
+
+export type DailyType = {
+    clouds: number,
+    dew_point: number,
+    dt: number,
+    feels_like: {day: 282.65, night: 279.05, eve: 282.2, morn: 277.92}
+    humidity: number,
+    moon_phase: number,
+    moonrise: number,
+    moonset: number,
+    pop: number,
+    pressure: number,
+    sunrise: number,
+    sunset: number,
+    temp: {day: 283.08, min: 277.93, max: 283.33, night: 279.05, eve: 282.2,morn: 278.99},
+    uvi: number,
+    weather: WeatherType[],
+    wind_deg: number,
+    wind_gust: number,
+    wind_speed: number,
+}
+
+export type HourlyType = {
+    clouds: number,
+    dew_point: number,
+    dt: number,
+    feels_like: number,
+    humidity: number,
+    pop: number,
+    pressure: number,
+    temp: number,
+    uvi: number,
+    visibility: number,
+    weather: WeatherType[],
+    wind_deg: number,
+    wind_gust: number,
+    wind_speed: number,
+}
+
+export type MinutelyType = {
+    dt: number,
+    precipitation: number,
 }

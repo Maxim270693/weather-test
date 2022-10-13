@@ -1,6 +1,7 @@
-import {ActionsType, InitialStateType, WeatherTypes} from "../../types/types";
+import {ActionsType, InitialStateType, WeatherDaysType, WeatherTypes} from "../../types/types";
 import {
     ADD_CITY,
+    GET_WEATHER_DAYS,
     CURRENT_PAGE,
     EDIT_CITY,
     INPUT_VALUE,
@@ -13,6 +14,7 @@ import {
 
 export const initialState = {
     cities: JSON.parse(localStorage.getItem('cities')!) || [] as WeatherTypes[],
+    weatherDays: {} as WeatherDaysType,
     isLoading: false,
     isError: '',
     inputValue: '',
@@ -25,6 +27,8 @@ export const cityReducer = (state = initialState, action: ActionsType): InitialS
     switch (action.type) {
         case ADD_CITY:
             return {...state, cities: [...state.cities, action.payload], inputValue: ''}
+        case GET_WEATHER_DAYS:
+            return {...state, weatherDays: action.payload}
         case REMOVE_CITY:
             return {
                 ...state,
