@@ -5,6 +5,7 @@ import Card from "../Card/Card";
 import {RootStateType, WeatherTypes} from "../../types/types";
 import {getWeatherDays} from "../../bll/thunks/thunk";
 import DailyCard from "../DailyCard/DailyCard";
+import Spinner from "../Spinner/Spinner";
 
 
 const SingleCity = () => {
@@ -13,6 +14,7 @@ const SingleCity = () => {
     const {city} = useParams();
     const cities = useSelector<RootStateType, WeatherTypes[]>(state => state.city.cities);
     const currentCity = cities.find(currentCity => currentCity.name === city);
+    const isLoading = useSelector<RootStateType, boolean>(state => state.city.isLoading);
 
     useEffect(() => {
         if (currentCity) {
@@ -25,9 +27,12 @@ const SingleCity = () => {
     return (
         <div>
             {currentCity && <Card city={currentCity}/>}
-            <DailyCard/>
+            {
+                isLoading ? <Spinner/> : <DailyCard/>
+            }
         </div>
     );
-};
+}
+;
 
 export default SingleCity;
