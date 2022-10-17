@@ -23,7 +23,7 @@ const SingleCity = () => {
             dispatch(getWeatherDays(currentCity.coord.lat, currentCity.coord.lat))
         }
 
-    }, []);
+    }, [currentCity]);
 
     return (
         <div>
