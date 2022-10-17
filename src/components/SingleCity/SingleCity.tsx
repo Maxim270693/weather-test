@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react';
-import {useParams} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
 import Card from "../Card/Card";
 import {RootStateType, WeatherTypes} from "../../types/types";
 import {getWeatherDays} from "../../bll/thunks/thunk";
 import DailyCard from "../DailyCard/DailyCard";
 import Spinner from "../Spinner/Spinner";
+import './SingleCity.scss';
 
 
 const SingleCity = () => {
@@ -26,7 +27,16 @@ const SingleCity = () => {
 
     return (
         <div>
-            {currentCity && <Card city={currentCity}/>}
+            <Link to='/'
+                  className="link"
+            >
+                Go Back
+            </Link>
+
+            {
+                currentCity && <Card city={currentCity}/>
+            }
+
             {
                 isLoading ? <Spinner/> : <DailyCard/>
             }
